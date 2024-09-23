@@ -136,13 +136,22 @@ ax.set_ylim(1.e-3, 10.e2)
 inel_label = ('$M_N<$ ${{{:g}}}$ GeV').format(inel[0]) + (' ($Q^2_p<$ ${{{:g}}}$ GeV$^2$)').format(inel[2])
 title_label = ('$Q^2_e<$ ${{{:g}}}^{{{:g}}}$ GeV$^2$').format(10,np.log10(inel[1]))
 plt.loglog(wv2[:303], int_el[:303], linestyle = 'solid',  linewidth=2,  label = 'tagged elastic')
-plt.loglog(wv1[:303], int_inel[:303], linestyle = 'dotted',  linewidth=2, label = inel_label)
+plt.loglog(wv1[:303], int_inel[:303], linestyle = 'dashed',  linewidth=2, label = inel_label)
 
 #plt.grid()
 
 plt.legend(title = title_label)
 
 plt.grid()
+
+
+
+# Add additional information
+info_text = "EIC"
+plt.text(0.50, 0.75, info_text, transform=ax.transAxes, ha='center', va='center', fontsize=20, color='blue')
+
+info_text_2 = r"$E_e$ = 18  GeV; $E_p$ = 275 GeV"
+plt.text(0.50, 0.69, info_text_2, transform=ax.transAxes, ha='center', va='center', fontsize=20, color='blue')
 
 
 
@@ -159,7 +168,8 @@ font1 = {'family':'serif','color':'black','size':24}
 font2 = {'family':'serif','color':'black','size':24}
 
 plt.xlabel("W$_0$ [GeV]", fontdict=font2)
-plt.ylabel("$\sigma_{\\tau^+\\tau^-}$ (W > W$_0$) [pb]", fontdict=font2)
+#plt.ylabel("$\sigma_{\\tau^+\\tau^-}$ (W > W$_0$) [pb]", fontdict=font2)
+plt.ylabel(r"$\sigma_{{\rm ep}\to {\rm e}(\gamma\gamma\to\tau^+\tau^-){\rm p}^{(\ast)}}$ (W > W$_0$) [pb]", fontdict = font2)
 
 
 
