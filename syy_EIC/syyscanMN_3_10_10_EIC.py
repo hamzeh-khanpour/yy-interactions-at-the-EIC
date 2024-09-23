@@ -16,7 +16,7 @@ q2pmax = 10.0
 wln = np.linspace(1.0, 3.0, 303)
 # wln = np.linspace(1., 2.5, 76)
 # wln = np.linspace(3., 3.25, 13)
-wlist = [10.0**x for x in wln]
+wlist = [5.0**x for x in wln]
 
 
 res_param = (mNmax, q2emax, q2pmax, wlist)
