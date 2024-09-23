@@ -1,5 +1,7 @@
 
-#===========================================================================
+# Final Version -- September 2024 -- Hamzeh Khanpour
+
+# ================================================================================
 
 
 import matplotlib.pyplot as plt
@@ -44,7 +46,7 @@ sys.path.append('./values')
 
 
 
-from wgrid_10_100000_10 import *
+from wgrid_3_10_10_EIC import *
 
 wv = np.array(wvalues[3])
 ie = np.array(inel[3])
@@ -54,9 +56,8 @@ wv1, int_inel = trap_integ(wv, ie)
 wv2, int_el = trap_integ(wv, el)
 
 fig, ax = plt.subplots(figsize = (9., 8.))
-ax.set_xlim(10., 1000.)
+ax.set_xlim(5.0, 100.0)
 ax.set_ylim(1.e-5, 1.0e0)
-
 
 
 
@@ -64,41 +65,9 @@ inel_label = ('$M_N<$ ${{{:g}}}$ GeV').format(inel[0]) + (' ($Q^2_p<$ ${{{:g}}}$
 title_label = ('$Q^2_e<$ ${{{:g}}}^{{{:g}}}$ GeV$^2$').format(10,np.log10(inel[1]))
 plt.loglog(wv2[:303], int_el[:303], linestyle = 'solid',  linewidth=2,  label = 'elastic')
 plt.loglog(wv1[:303], int_inel[:303], linestyle = 'dotted',  linewidth=2, label = inel_label)
-#plt.grid()
 
-
-
-
-
-
-from wgrid_50_100000_1000 import *
-
-wv = np.array(wvalues[3])
-ie = np.array(inel[3])
-wv1, int_inel = trap_integ(wv, ie)
-
-inel_label = ('$M_N<$ ${{{:g}}}$ GeV').format(inel[0]) + (' ($Q^2_p<$ ${{{:g}}}^{{{:g}}}$ GeV$^2$)').format(10,np.log10(inel[2]))
-plt.loglog(wv2[:303], int_inel[:303], linestyle = 'dashdot',  linewidth=2, label = inel_label)
 plt.legend(title = title_label)
-
-
-
-
-
-
-
-from wgrid_300_100000_100000 import *
-
-wv = np.array(wvalues[3])
-ie = np.array(inel[3])
-wv1, int_inel = trap_integ(wv, ie)
-
-inel_label = ('$M_N<$ ${{{:g}}}$ GeV').format(inel[0]) + (' ($Q^2_p<$ ${{{:g}}}^{{{:g}}}$ GeV$^2$)').format(10,np.log10(inel[2]))
-plt.loglog(wv2[:303], int_inel[:303], linestyle = 'dashdot',  linewidth=2, label = inel_label)
-plt.legend(title = title_label)
-
-
-
+plt.grid()
 
 
 
@@ -107,8 +76,6 @@ plt.legend(title = title_label)
 output_data = np.column_stack((wv2[:303], int_el[:303], int_inel[:303]))
 header = 'W_Value Elastic Inelastic'
 np.savetxt('output_values_ntegrated_Syy.txt', output_data, header=header, fmt='%0.8e', delimiter='\t')
-
-
 
 
 
@@ -122,8 +89,8 @@ plt.ylabel("Integrated S$_{\gamma \gamma}$ (W > W$_0$)", fontdict = font2)
 
 
 
-plt.savefig("yy_int_with_MN2_mMin2_q2min_Final_25April.pdf")
-plt.savefig("yy_int_with_MN2_mMin2_q2min_Final_25April.jpg")
+plt.savefig("yy_int_EIC.pdf")
+plt.savefig("yy_int_EIC.jpg")
 
 
 

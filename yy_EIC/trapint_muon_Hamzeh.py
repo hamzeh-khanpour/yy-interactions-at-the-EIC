@@ -1,3 +1,8 @@
+
+# Final Version -- September 2024 -- Hamzeh Khanpour
+
+# ================================================================================
+
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
@@ -138,7 +143,7 @@ sys.path.append('./values')
 
 
 
-from wgrid_10_100000_10_elastic_tagged import *
+from wgrid_3_10_10_EIC import *
 
 wv = np.array(wvalues[3])
 ie = np.array(inel[3])
@@ -148,8 +153,8 @@ wv1, int_inel = trap_integ(wv, ie)
 wv2, int_el = trap_integ(wv, el)
 
 fig, ax = plt.subplots(figsize = (9.0, 8.0))
-ax.set_xlim(10.0, 1000.0)
-ax.set_ylim(1.0e-7, 1.0e4)
+ax.set_xlim(5.0, 100.0)
+ax.set_ylim(1.0e-4, 1.0e4)
 
 
 inel_label = ('$M_N<$ ${{{:g}}}$ GeV').format(inel[0]) + (' ($Q^2_p<$ ${{{:g}}}$ GeV$^2$)').format(inel[2])
@@ -161,44 +166,7 @@ plt.loglog(wv1[:303], int_inel[:303], linestyle = 'dotted',  linewidth=2, label 
 
 plt.legend(title = title_label)
 
-#plt.grid()
-
-
-
-
-
-
-
-from wgrid_50_100000_1000_elastic_tagged import *
-
-wv = np.array(wvalues[3])
-ie = np.array(inel[3])
-wv1, int_inel = trap_integ(wv, ie)
-
-inel_label = ('$M_N<$ ${{{:g}}}$ GeV').format(inel[0]) + (' ($Q^2_p<$ ${{{:g}}}^{{{:g}}}$ GeV$^2$)').format(10,np.log10(inel[2]))
-plt.loglog(wv2[:303], int_inel[:303], linestyle = 'dashdot',  linewidth=2, label = inel_label)
-plt.legend(title = title_label)
-
-
-
-
-
-
-
-
-
-
-from wgrid_300_100000_100000_elastic_tagged import *
-
-wv = np.array(wvalues[3])
-ie = np.array(inel[3])
-wv1, int_inel = trap_integ(wv, ie)
-
-inel_label = ('$M_N<$ ${{{:g}}}$ GeV').format(inel[0]) + (' ($Q^2_p<$ ${{{:g}}}^{{{:g}}}$ GeV$^2$)').format(10,np.log10(inel[2]))
-plt.loglog(wv2[:303], int_inel[:303], linestyle = 'dashdot',  linewidth=2, label = inel_label)
-plt.legend(title = title_label)
-
-
+plt.grid()
 
 
 
@@ -222,8 +190,8 @@ plt.ylabel("$\sigma_{\mu^+\mu^-}$ (W > W$_0$) [pb]", fontdict = font2)
 
 
 
-plt.savefig("cs_muon_MN2_mMin2_q2min_Final_25April.pdf")
-plt.savefig("cs_muon_MN2_mMin2_q2min_Final_25April.jpg")
+plt.savefig("cs_muon_EIC.pdf")
+plt.savefig("cs_muon_EIC.jpg")
 
 
 

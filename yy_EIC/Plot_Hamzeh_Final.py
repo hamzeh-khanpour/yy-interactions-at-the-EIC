@@ -1,3 +1,8 @@
+
+# Final Version -- September 2024 -- Hamzeh Khanpour
+
+# ================================================================================
+
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
@@ -47,7 +52,7 @@ wv1, int_inel = trap_integ(wv, ie)
 wv2, int_el = trap_integ(wv, el)
 
 fig, ax = plt.subplots(figsize = (9., 8.))
-ax.set_xlim(10., 1000.)
+ax.set_xlim(5., 100.)
 ax.set_ylim(1.e-5, 1.5e-1)
 
 inel_label = 'M$_N$ < ' + str(inel[0]) + ' GeV'
