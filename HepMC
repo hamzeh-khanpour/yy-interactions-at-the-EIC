@@ -1,0 +1,1 @@
+hamzeh-khanpour@hamzeh-khanpour-HP-ENVY-Laptop-16-h1xxx:~/hepmc3-build$ ./outputs/bin/convert_example.exe -i hepmc3 -o treeroot /home/hamzeh-khanpour/Desktop/EIC/EIC_100K_QE.hepmc /home/hamzeh-khanpour/Desktop/EIC/EIC_100K_QE.root

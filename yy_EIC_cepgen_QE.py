@@ -4,7 +4,7 @@
 # export CEPGEN_PATH=/afs/cern.ch/user/h/hakhanpo/CEPGEN/cepgen
 # ./build/bin/cepgen lpair_lhec_cfg.py
 
-#  Laurent -- 23 April 2024
+#  Laurent -- 30 September 2024
 
 
 import Config.Core as cepgen
@@ -37,16 +37,16 @@ process = cepgen.Module('lpair',
         pdgIds = (2212, 11),
         formFactors = [standardDipole, pointLikeFermion],
         pz = (275.0, 18.0),
-        structureFunctions = cepgen.StructureFunctions.luxLike,
-#        structureFunctions = cepgen.StructureFunctions.suriYennie,
+#        structureFunctions = cepgen.StructureFunctions.luxLike,
+        structureFunctions = cepgen.StructureFunctions.suriYennie,
 #        structureFunctions = cepgen.StructureFunctions.fioreBrasse,
 #        structureFunctions = cepgen.StructureFunctions.allm97,
     ),
     outKinematics = cepgen.Parameters(
         invmass = (5.0, 0.0),
 #        pt = (2.5, 0.0),
-        q2 = [(0.0, 5.0), (0.0, 5.0)],
-#        mx = (1.073248881, 3.0),
+        q2 = [(0.0, 10.0), (0.0, 10.0)],
+        mx = (1.073248881, 3.0),
 #        energy = (5.0,0.0),
 #        eta = (-2.50, 2.50),
     )
@@ -54,7 +54,7 @@ process = cepgen.Module('lpair',
 
 # events generation parameters
 generator = _gen.clone(
-    numEvents = 10,
+    numEvents = 100000,
     printEvery = 2500,
 )
 
@@ -64,14 +64,14 @@ text = cepgen.Module('text', # histogramming/ASCII output capability
         'pt(7):pt(8)': cepgen.Parameters(xrange=(0.0, 50.0), yrange=(0.0, 50.0), log=True)
     }
 )
-lhef = cepgen.Module('lhef', filename='/eos/user/h/hakhanpo/EIC.lhe')
-hepmc = cepgen.Module('hepmc', filename='/eos/user/h/hakhanpo/EIC.hepmc')
+#lhef = cepgen.Module('lhef', filename='EIC.lhe')
+hepmc = cepgen.Module('hepmc', filename='EIC_100K_QE.hepmc')
 dump = cepgen.Module('dump', printEvery = generator.printEvery)
 #rootTree.filename = 'my_output_file.root'
 output = cepgen.Sequence(
 #    rootTree,
     text,
-    lhef,
+#    lhef,
     hepmc,
     dump,
 )
