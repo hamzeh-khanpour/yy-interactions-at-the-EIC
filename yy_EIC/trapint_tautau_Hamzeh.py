@@ -27,27 +27,6 @@ plt.rcParams['legend.title_fontsize'] = 'x-large'
 
 
 
-
-#def cs_tautau_w(wvalue):
-    #re = 2.8179403262e-15 * 137.0 / 128.0
-    #me = 0.510998950e-3
-    #mtau = 1.77686
-    #hbarc2 =  0.389
-    #alpha2 = (1.0/133.0)*(1.0/133.0)
-    ## Element-wise calculation of beta using np.where
-    #beta = np.sqrt(np.where(1.0 - 4.0 * mtau * mtau / wvalue**2.0 >= 0, 1.0 - 4.0 * mtau * mtau / wvalue**2.0, np.nan))
-    ##cs = 4.0 * np.pi * re * re * me * me / wvalue / wvalue \
-         ##* ((1.0+4.0*mtau*mtau/wvalue/wvalue)*np.log(wvalue * wvalue / mtau / mtau) - 1.0 - 2.0*mtau*mtau/wvalue/wvalue)
-    ##cs = 4.0 * np.pi * hbarc2 * alpha2 / wvalue / wvalue \
-         ##* ( (1.0 + 4.0*mtau*mtau/wvalue/wvalue)*np.log(wvalue * wvalue / mtau / mtau) - 1.0 - 2.0*mtau*mtau/wvalue/wvalue)  * 1e9
-
-    #cs = 4.0 * np.pi * hbarc2 * alpha2 / wvalue / wvalue \
-         #* ( (1.0 + 4.0*mtau*mtau/wvalue/wvalue)*np.log(wvalue * wvalue / mtau / mtau) - beta* (1.0 + 4.0 * mtau * mtau / wvalue**2.0) )  * 1e9
-
-    #return cs
-    
-
-
 ##################################################################
 
 def cs_tautau_w_condition_Hamzeh(wvalue):  # Eq.62 of Physics Reports 364 (2002) 359-450
@@ -180,31 +159,4 @@ plt.savefig("cs_tautau_EIC.jpg")
 
 
 plt.show()
-
-
-
-
-
-"""
-from wgrid_2_4_4_0908 import *
-
-wv = np.array(wvalues[3])
-ie = np.array(inel[3])
-wv1, int_inel = trap_integ(wv, ie)
-
-inel_label = 'M_N < ' + str(inel[0])
-plt.loglog(wv1[:202], int_inel[:202], '-', label = inel_label)
-plt.legend(title = title_label)
-
-from wgrid_3_4_4_0908 import *
-
-wv = np.array(wvalues[3])
-ie = np.array(inel[3])
-wv1, int_inel = trap_integ(wv, ie)
-
-inel_label = 'M_N < ' + str(inel[0])
-plt.loglog(wv2[:202], int_inel[:202], '-', label = inel_label)
-plt.legend(title = title_label)
-"""
-
 
